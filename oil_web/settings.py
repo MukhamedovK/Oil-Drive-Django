@@ -23,10 +23,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    'django.contrib.sites',
     "ckeditor",
+    'treebeard',
     "main_page",
     "modeltranslation",
     "cms",
+    "menus",
 ]
 
 MIDDLEWARE = [

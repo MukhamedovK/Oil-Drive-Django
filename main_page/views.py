@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.utils import translation
 from telebot import TeleBot
 
-from cms.models import UnderDevelopment
+# from cms.models import UnderDevelopment
 from .models import Product, Category, \
     Feedback, ClientRequest, FAQ, AboutCompany, Email, PhoneNumbers, Banner, TopSale, Currency, Partner
 from .utils import add_product_to_seen, send_google_sheets, create_lid
@@ -13,12 +13,12 @@ bot = TeleBot('6813417526:AAG7_jph1kByWrU2g6KOoQpSpq3za2V8BPA')
 
 
 # Страница заглушка
-def main_page_u_d(request, language='uz'):
-    translation.activate(language)
-    main_texts = UnderDevelopment.objects.first()
+# def main_page_u_d(request, language='uz'):
+#     translation.activate(language)
+#     main_texts = UnderDevelopment.objects.first()
 
-    return render(request, 'index.html', {'lang': language,
-                                          'main_texts': main_texts})
+#     return render(request, 'index.html', {'lang': language,
+#                                           'main_texts': main_texts})
 
 
 def main_page_(request):

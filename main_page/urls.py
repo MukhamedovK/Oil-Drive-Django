@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import main_page, \
-    main_page_, main_page_u_d, exact_product_page, catalog_page, get_form_data, contacts_page, about_page, \
+    main_page_, exact_product_page, catalog_page, get_form_data, contacts_page, about_page, \
     production_page
 
 urlpatterns = [
