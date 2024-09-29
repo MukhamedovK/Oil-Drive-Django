@@ -6,3 +6,4 @@ cms/__pycache__
 cms/migrations
 .idea/
 assets/
+db.sqlite
