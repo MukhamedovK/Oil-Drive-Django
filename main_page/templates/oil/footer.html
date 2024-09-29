@@ -1,0 +1,55 @@
+{% load static %}
+<footer>
+        <div class="footer-box container">
+            <div class="logo">
+                <img src="../../static/img/mono.PNG" alt="">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="bold-text">Меню</li>
+                    <li><a href="/about/{{ lang }}">О компании</a></li>
+                    <li><a href="/catalog/{{ lang }}">Каталог</a></li>
+                    <li><a href="/production/{{ lang }}">Продукция</a></li>
+                    <li><a href="/contacts/{{ lang }}">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="navigation">
+                <ul>
+                    <li class="bold-text">Навигация</li>
+                    <li><a href="">Хиты продаж</a></li>
+                    <li><a href="">Новинки</a></li>
+                    <li><a href="">Скидки</a></li>
+                    <li><a href="">Отзывы</a></li>
+                </ul>
+            </div>
+            <div class="other">
+                <ul>
+                    <li><a href="">Вопрос/Ответ</a></li>
+                </ul>
+            </div>
+            <div class="other-2">
+                <p class="make_request">
+                    <button id="show_form_button_f">
+                        Оставить заявку
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="upper">
+                {% for contact in contacts %}
+                    <p>{{ contact.contact_number }}</p>
+                {% endfor %}
+            </div>
+            <div class="bottom">
+                <div class="offerta">
+                    <p>Условия использования</p>
+                    <p>Согласие на обработку персональных данных</p>
+                </div>
+                <div class="address">
+                    <img src="{% static 'img/location_copy.svg' %}" alt="location">
+                    <p>{{ address }}</p>
+                </div>
+            </div>
+        </div>
+    </footer>

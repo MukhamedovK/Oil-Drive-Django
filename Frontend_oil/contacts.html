@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200..800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/catalog.css">
+    <link rel="stylesheet" href="static/css/contacts.css">
+
+    <title>OilDrive - Контакты</title>
+</head>
+<body>
+    <header>
+        <div class="header-mobile" id="header-mobile">
+            <div class="search-bar">
+                <form action="">
+                    <input type="text" placeholder="Поиск" name="search">
+                </form>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="/" class="navbar_logo">
+                            <img src="./static/img/Horizontal logo.png" alt="" width="100%">
+                        </a>
+                    </li>
+                    <li class="language-burger">
+                        <select>
+                            <option value="">
+                                <a href="">UZ</a>
+                            </option>
+                            <option value="">
+                                <a href="">RU</a>
+                            </option>
+                        </select>
+                        <div class="burger-menu" id="burger-menu">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="top-header container" id="top-header">
+            <div class="address"> 
+                <img src="static/img/location.svg" alt="">   
+                <p>г. Ташкент, Сергелийский район, ул. Сугдиана 50Ж</p>
+            </div>
+            <a href="/" class="navbar_logo hidden">
+                <img src="./static/img/Horizontal logo.png" alt="" width="210px">
+            </a>
+            <div class="search-bar" id="search-bar">
+                <input type="text" placeholder="Поиск" name="search">
+            </div>
+            <div class="phone-number"> 
+                <img src="static/img/call.svg" alt="">
+                <div>
+                    <p>(123) 456-7890</p>
+                    <p>(123) 456-7890</p>
+                </div>
+            </div>
+        </div>
+        <div class="navbar container" id="navbar">
+            <a href="/" class="navbar_logo" id="navbar_logo">
+                <img src="./static/img/Horizontal logo.png" alt="" width="210px">
+            </a>
+            <nav class="navbar_menu">
+                <ul class="navbar_items">
+                    <li>
+                        <a href="/about.html">О компании</a>
+                    </li>
+                    <li class="category">
+                        <a href="/catalog.html">Каталог</a>
+                        <div class="popup-menu">
+                            <a href="#">
+                                Для легковых и легких коммерческих автомобилей
+                            </a>
+                            <a href="#">
+                                Для грузовых и тяжелых коммерческих автомобилей
+                            </a>
+                            <a href="#">
+                                Для индустрии
+                            </a>
+                            <a href="#">
+                                Для спецтехники
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/catalog.html">Продукция</a>
+                    </li>
+                    <li>
+                        <a href="/contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="burger-menu" id="burger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="burger-menu-items">
+                <li>
+                    <a href="/about.html">О компании</a>
+                </li>
+                <li class="category">
+                    <a href="/catalog.html">Каталог</a>
+                    <div class="popup-menu">
+                        <a href="#">
+                            Для легковых и легких коммерческих автомобилей
+                        </a>
+                        <a href="#">
+                            Для грузовых и тяжелых коммерческих автомобилей
+                        </a>
+                        <a href="#">
+                            Для индустрии
+                        </a>
+                        <a href="#">
+                            Для спецтехники
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a href="/catalog.html">Продукция</a>
+                </li>
+                <li>
+                    <a href="/contacts.html">Контакты</a>
+                </li>
+            </ul>
+            <div id="overlay"></div>
+                <section class="feedback hidden" id="request_form_overlay">
+                    <div class="feedback-box" id="feedback-box">
+                        <div class="form-groug" id="request_form">
+                            <div class="title" id="overlay-title">
+                                <h2>Оставьте заявку</h2>
+                            </div>
+                            <form action="" id="overlay-form">
+                                <input type="text" name="fio" placeholder="ФИО" required>
+                                <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                                <input type="email" name="email" placeholder="E-mail" required>
+                                <textarea name="comment" id="overlay-text" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                                <!-- make 2 checkboxes -->
+                                <div class="form-group">
+                                    <input type="checkbox" id="overlay-consent1" name="consent1" required>
+                                    <label for="consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="overlay-consent2" name="consent2" required>
+                                    <label for="consent2">Я даю согласие на получение рекламной рассылки.</label>
+                                </div>
+                                <button type="submit">
+                                    Отправить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            <div class="language_request">
+                <select>
+                    <option value="">
+                        <a href="">UZ</a>
+                    </option>
+                    <option value="">
+                        <a href="">RU</a>
+                    </option>
+                </select>
+                <p class="make_request">
+                    <button id="show_form_button">
+                        Оставить заявку
+                    </button>
+                </p>
+            </div>
+        </div>
+    </header>
+    <div class="path">
+        <ul>
+            <li>Главная</li>
+            <li><span>/</span></li>
+            <li>Контакты</li>
+        </ul>
+    </div>
+    <section class="contact-box container">
+        <div class="title">
+            <h2>Контакты</h2>
+        </div>
+        <div class="location-number">
+            <div class="os">
+                <ul>
+                    <li>
+                        <img src="/static/img/location.svg" alt="">
+                        <span class="span-line-vert"></span>
+                        <p>г. Ташкент, Сергелийский район, ул. Сугдиана 50Ж </p>
+                    </li>
+                    <li>
+                        <img src="/static/img/call.svg" alt="">
+                        <span class="span-line-vert"></span>
+                        <div class="phone-numbers">
+                            <p>+998 (99) 010 90 94</p>
+                            <p>+998 (97) 450 83 83</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/static/img/location.svg" alt="">
+                        <span class="span-line-vert"></span>
+                        <div class="phone-numbers">
+                            <p>marketing@oildrive.uz</p>
+                            <p>b2b@oildrive.uz</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="map">
+                <iframe class="ifr" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae44183608846fd19e13498f6b1cbb967948200f6c8302bc3248a678125b10b72&amp;source=constructor" width="804" height="330" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+    <section class="feedback container">
+        <div class="title">
+            <h2>Оставьте заявку и мы проконсультируем вас!</h2>
+        </div>
+        <div class="feedback-box" id="feedback-box">
+            <div class="form-groug" id="request_form">
+                <form action="">
+                    <input type="text" name="fio" placeholder="ФИО" required>
+                    <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <textarea name="comment" id="" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                    <!-- make 2 checkboxes -->
+                    <div class="form-group">
+                        <input type="checkbox" id="consent1" name="consent1" required>
+                        <label for="consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="consent2" name="consent2" required>
+                        <label for="consent2">Я даю согласие на получение рекламной рассылки.</label>
+                    </div>
+                    <button type="submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+            <div class="image">
+                <img src="static/img/image 37.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-box container">
+            <div class="logo">
+                <img src="static/img/Horizontal logo.png" alt="">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="bold-text">Меню</li>
+                    <li>О компании</li>
+                    <li>Каталог</li>
+                    <li>Продукция</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="navigation">
+                <ul>
+                    <li class="bold-text">Навигация</li>
+                    <li>Преимущество</li>
+                    <li>Продукция</li>
+                    <li>Хиты продаж</li>
+                    <li>Новинки</li>
+                </ul>
+            </div>
+            <div class="other">
+                <ul>
+                    <li>Скидки</li>
+                    <li>Отзывы</li>
+                    <li>Вопрос/Ответ</li>
+                </ul>
+            </div>
+            <div class="other-2">
+                <p class="make_request">
+                    <button id="show_form_button">
+                        Оставить заявку
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="upper">
+                <p>31231</p>
+                <p>31231</p>
+            </div>
+            <div class="bottom">
+                <div class="offerta">
+                    <p>Условия использования</p>
+                    <p>Согласие на обработку персональных данных</p>
+                </div>
+                <div class="address"> 
+                    <img src="static/img/location copy.svg" alt="">   
+                    <p>г. Ташкент, Сергелийский район, ул. Сугдиана 50Ж</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <section class="header" style="height: 100px;"></section> -->
+    <script src="static/js/script.js"></script>
+</body>
+</html>

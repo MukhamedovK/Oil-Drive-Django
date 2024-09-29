@@ -1,0 +1,148 @@
+{% load static %}
+<style>
+.nav-menu-adaptive {
+  display: none;
+  grid-auto-flow: row;
+  max-width: 240px;
+  position: absolute;
+    font-family: Montserrat;
+    right: 0;
+    top: 10%;
+    z-index: 3;
+  background: #ffffff;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+.nav-menu-adaptive ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.nav-menu-adaptive ul a {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 23.94px;
+  text-decoration: none;
+  color: rgba(16, 16, 17, 1);
+
+}
+.nav-menu-adaptive .nav-menu-up .logo{
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+}
+.nav-menu-adaptive .nav-menu-up {
+    background: #e00c1a;
+    padding: 14px 28px;
+  display: flex;
+    align-items: center;
+  gap: 40px;
+    border-radius: 20px 0 0 0;
+}
+.nav-menu-adaptive .nav-menu-up .close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-menu-adaptive .nav-bottom {
+    padding: 14px 28px;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 15px;
+}
+.nav-menu-adaptive .nav-center {
+    padding: 30px 25px;
+  display: flex;
+}
+.nav-menu-adaptive .make_request_ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.nav-menu-adaptive .make_request_ button {
+    cursor: pointer;
+    text-align: center;
+    margin: 0;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #E00C1A;
+    list-style: none;
+    text-decoration: none;
+    font-weight: 700;
+    color: #ffffff;
+    border-width: 0;
+}
+.nav-menu-adaptive .nav-center ul {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 30px;
+}
+.nav-menu-adaptive .nav-bottom .phone-number {
+    justify-self: start;
+}
+.nav-menu-adaptive .nav-bottom p {
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 400;
+}
+</style>
+<div class="nav-menu-adaptive">
+  <div class="nav-menu-up">
+      <div class="logo">
+          <img src="../../static/img/Horizontal logo.png" alt="" width="100%">
+      </div>
+      <div class="close-button">
+          <span><img src="../../static/img/Vector.svg" alt=""></span>
+      </div>
+  </div>
+  <div class="nav-center">
+      <ul>
+          <li>
+              <a href="/about/{{ lang }}">О компании</a>
+              <span class="span-line"></span>
+          </li>
+
+          <li>
+              <a href="/catalog/{{ lang }}/">Каталог</a>
+              <div class="popup-menu">
+                  {% for category in categories %}
+                      <a href="/catalog/{{ lang }}/?category={{ category.category_name }}">
+                          {{ category.category_name }}
+                      </a>
+                  {% endfor %}
+              </div>
+              <span class="span-line"></span>
+          </li>
+          <li>
+              <a href="/production/{{ lang }}">Продкуция</a>
+              <span class="span-line"></span>
+          </li>
+          <li>
+              <a href="/contacts/{{ lang }}">Контакты</a>
+              <span class="span-line"></span>
+          </li>
+      </ul>
+  </div>
+  <div class="nav-bottom">
+      <p class="make_request_">
+          <button id="show_form_button_mobile">
+              Оставить заявку
+          </button>
+      </p>
+      <div class="phone-number">
+          <img src="../../static/img/call.svg" alt="">
+          <div>
+              {% for number in contacts %}
+                  <p>{{ number.contact_number }}</p>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="address">
+          <img src="../../static/img/location.svg" alt="">
+          <p>{{ address }}</p>
+      </div>
+  </div>
+</div>

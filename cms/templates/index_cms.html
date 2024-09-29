@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OilDrive</title>
+    <meta name="description" content="oildrive">
+    <meta name="keywords" content="oildrive, оилдрайв, моторные масла, lotos">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya Sans SC&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+          <img class="logo" src="{% static 'img/Horizontal logo.png' %}" alt="">
+          <nav class="header-links">
+            <a href="/uz" {% if lang == 'uz' %}style="font-weight: 800; color: #010101"{% endif %}>UZ</a>
+            <a href="/ru" {% if lang == 'ru' %}style="font-weight: 800; color: #010101"{% endif %}>RU</a>
+            <a href="/en" {% if lang == 'en' %}style="font-weight: 800; color: #010101"{% endif %}>EN</a>
+          </nav>
+        </div>
+    </header>
+    <div class="banner">
+        <h1 class="banner-header">
+            <i>
+                {% if lang == 'ru' %}
+                    <input type="text" value="{{ main_texts.main_text_ru }}">
+                {% elif lang == 'uz' %}
+                    <input type="text" value="{{ main_texts.main_text_uz }}">
+                {% elif lang == 'en' %}
+                    <input type="text" value="{{ main_texts.main_text_en }}">
+                {% else %}
+                    <input type="text" value="{{ main_texts.main_text_ru }}">
+                {% endif %}
+            </i>
+        </h1>
+    </div>
+    <footer>
+        <div class="container">
+<!--            <div class="item-col-3 bg-dark">-->
+<!--                <iframe class="ifr" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae44183608846fd19e13498f6b1cbb967948200f6c8302bc3248a678125b10b72&amp;source=constructor" width="804" height="330" frameborder="0"></iframe>-->
+<!--            </div>-->
+            <div class="item-col-3 bg-dark">
+                <div class="item-col-3-title">
+                    <h2>Контакты</h2>
+                </div>
+                <div class="item-col-contacts">
+                    <p>
+                        <a class="a-phone" href="tel:990109094">+998 99 010 9094</a> 
+                        <br>
+                        <a class="a-phone" href="tel:974508383">+998 97 450 8383</a>
+                    </p>
+                    <p>
+                        <a class="a-phone" href="mailto:b2b@oildrive.uz">b2b@oildrive.uz</a>
+                        <br>
+                        <a class="a-phone" href="mailto:marketing@oildrive.uz">marketing@oildrive.uz</a>
+                    </p>
+                    <p>
+                        <a class="a-phone" href="https://yandex.uz/maps/10335/tashkent/house/YkAYdARlQUMEQFprfX5zdHtnYQ==/?ll=69.235863%2C41.225746&z=16.41">
+                            100115, г. Ташкент, Сергелийский район, ул. Сугдиана 50Ж
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

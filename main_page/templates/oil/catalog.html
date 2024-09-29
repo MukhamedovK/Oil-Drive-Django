@@ -1,0 +1,108 @@
+{% extends 'oil/base.html' %}
+
+
+{% block content %}
+    <body class="catalog-body">
+        <div class="path">
+            <ul>
+                <li>Главная</li>
+                <li><span>/</span></li>
+                <li>Продукты</li>
+                <li><span>/</span></li>
+                <li>{{ category_name }}</li>
+            </ul>
+        </div>
+        <div class="title container">
+            <p>{{ category_name }}</p>
+        </div>
+        <main>
+            <div class="content container">
+                <section class="sidebar">
+                    <div class="side-filters">
+                        <form action="">
+                            <div class="category-filter">
+                                <p style="font-family: 'Alegreya Sans SC', sans-serif; font-size: 16px">
+                                    Категория
+                                </p>
+                                <span class="span-line"></span>
+                                <ul>
+                                    {% for category in categories %}
+                                        <li style="font-family: 'Noto Sans', sans-serif">
+                                            <input type="checkbox"
+                                                   id="{{category.category_name}}"
+                                                   name="category"
+                                                   value="{{category.category_name}}"
+                                            >
+                                            <label for="{{category.category_name}}">{{category.category_name}}</label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="category-filter">
+                                <p style="font-family: 'Alegreya Sans SC', sans-serif; font-size: 16px">
+                                    Бренд
+                                </p>
+                                <span class="span-line"></span>
+                                <ul>
+                                    {% for partner in partners %}
+                                        <li style="font-family: 'Noto Sans', sans-serif">
+                                            <input type="checkbox" id="category_name_1" name="brand" value="{{ partner.partner_name }}">
+                                            <label for="category_name_1">{{ partner.partner_name }}</label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="filter-buttons">
+                                <button type="reset">Сбросить фильры</button>
+                                <button type="submit">Применить фильры</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <section class="catalog">
+                    <div class="filter" style="font-family: 'Noto Sans', sans-serif">
+                        <p>Сортировать: </p>
+                        <select onchange="sorting()" style="font-family: 'Noto Sans', sans-serif">
+                            <option value="popular">По популярности</option>
+                            <option value="popular">По убыванию цены</option>
+                            <option value="popular">По возрастанию цены</option>
+                            <option value="popular">Скидки</option>
+                        </select>
+                    </div>
+                    <ul class="catalog-slider">
+                        {% for product in catalog_items %}
+                            {% for i in product.volume_photos.all %}
+                                {% if i.first %}
+                                    <li class="catalog-products">
+                                        <img src="/media/{{ i.volume_photo }}" alt="static/img/image 33.jpg" width="202px" height="250px">
+<!--                                        <img src="/media/{{ product.volume_photos.all.0.volume_photo }}" alt="static/img/image 33.jpg" width="202px" height="250px">-->
+
+                                        <p class="pr-name">{{ product.name }}</p>
+                                        <div class="price">
+                                            <p class="price-main" id="price">{% widthratio i.volume_price 1 currency_rate %} UZS</p>
+                                            <a href="/exact-product/{{ product.id }}/{{ lang }}">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                        <a href="/exact-product/{{ product.id }}/{{ lang }}" class="detail-button">Подробнее</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </section>
+            </div>
+            {% if have_seen %}
+                {% include 'oil/seen-products.html' %}
+            {% endif %}
+        </main>
+    </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sizeLinks = document.querySelectorAll('.price-main');
+            sizeLinks.forEach(function(link) {
+                link.textContent = link.textContent.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            })
+        })
+    </script>
+{% endblock %}

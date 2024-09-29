@@ -1,0 +1,22 @@
+<section class="top-products container">
+    <div class="title">
+        <h2>Просмотренные товары</h2>
+    </div>
+    <div class="top-products-box">
+        <ul class="products-slider">
+            {% for history in have_seen %}
+                <li style="height: 379px">
+                    <img src="/media/{{ history.volume_photos }}" alt="" width="202px" height="250px">
+                    <p class="pr-name">{{ history.name }}</p>
+                    <div class="price">
+                        <p class="price-main">{% widthratio history.price 1 currency_rate %} UZS</p>
+                        <a href="/exact-product/{{ history.id }}/{{ lang }}">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a class="detail-button" href="/exact-product/{{ history.id }}/{{ lang }}">Подробнее</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200..800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Oil Drive</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="top-header container">
+            <div class="address"> 
+                <img src="static/img/location.svg" alt="">   
+                <p>г. Ташкент, Сергелийский район, ул. Сугдиана 50Ж</p>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Поиск" name="search">
+            </div>
+            <div class="phone-number"> 
+                <img src="static/img/call.svg" alt="">
+                <div>
+                    <p>(123) 456-7890</p>
+                    <p>(123) 456-7890</p>
+                </div>
+            </div>
+        </div>
+        <div class="navbar container">
+            <a href="/" class="navbar_logo">
+                <img src="./static/img/Horizontal logo.png" alt="" width="210px">
+            </a>
+            <nav class="navbar_menu">
+                <ul class="navbar_items">
+                    <li>
+                        <a href="/about.html">О компании</a>
+                    </li>
+                    <li class="category">
+                        <a href="/catalog.html">Каталог</a>
+                        <div class="popup-menu">
+                            <a href="#">
+                                Для легковых и легких коммерческих автомобилей
+                            </a>
+                            <a href="#">
+                                Для грузовых и тяжелых коммерческих автомобилей
+                            </a>
+                            <a href="#">
+                                Для индустрии
+                            </a>
+                            <a href="#">
+                                Для спецтехники
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/catalog.html">Продукция</a>
+                    </li>
+                    <li>
+                        <a href="/contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="overlay"></div>
+                <section class="feedback hidden" id="request_form_overlay">
+                    <div class="feedback-box" id="feedback-box">
+                        <div class="form-groug" id="request_form">
+                            <div class="title" id="overlay-title">
+                                <h2>Оставьте заявку</h2>
+                            </div>
+                            <form action="" id="overlay-form">
+                                <input type="text" name="fio" placeholder="ФИО" required>
+                                <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                                <input type="email" name="email" placeholder="E-mail" required>
+                                <textarea name="comment" id="overlay-text" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                                <!-- make 2 checkboxes -->
+                                <div class="form-group">
+                                    <input type="checkbox" id="overlay-consent1" name="consent1" required>
+                                    <label for="consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="overlay-consent2" name="consent2" required>
+                                    <label for="consent2">Я даю согласие на получение рекламной рассылки.</label>
+                                </div>
+                                <button type="submit">
+                                    Отправить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            <div class="language_request">
+                <p>
+                    <a href="">UZ</a>
+                    <a href="">RU</a>
+                </p>
+                <p class="make_request">
+                    <button id="show_form_button">
+                        Оставить заявку
+                    </button>
+                </p>
+            </div>
+        </div>
+    </header>
+    <section class="main-banners container">
+        {% if main_page.banner %}
+            <div class="add-block">
+            </div>
+        {% endif %}
+        {% if main_page.category_block %}
+            <ul class="catalog-pic">
+            <li>
+                <img src="static/img/category (1).svg" alt="">
+            </li>
+            <li>
+                <img src="static/img/category.svg" alt="">
+            </li>
+            <li>
+                <img src="static/img/category (2).svg" alt="">
+            </li>
+            <li>
+                <img src="static/img/category (3).svg" alt="">
+            </li>
+        </ul>
+        {% endif %}
+    </section>
+    <section class="best-points container">
+        <div class="card">
+            <h3>Передовые технологии</h3>
+            <img src="static/img/Group 41.svg" alt="" class="lines">
+            <h3>Гарантия качества</h3>
+            <img src="static/img/Group 41.svg" alt="" class="lines">
+            <h3>Удобство заказа</h3>
+            <img src="static/img/Group 41.svg" alt="" class="lines">
+        </div>
+        <div class="card card-center">
+            <img src="static/img/Symbol.png" alt="" class="square-logo">
+            <!-- <a href="/" class="more_info">Подробнее</a> -->
+        </div>
+        <div class="card">
+            <h3>Высокое качество</h3>
+            <img src="static/img/Group 40.svg" alt="" class="lines">
+            <h3>Премиальный уровень</h3>
+            <img src="static/img/Group 40.svg" alt="" class="lines">
+            <h3>Спец. предложения и акции</h3>
+            <img src="static/img/Group 40.svg" alt="" class="lines">
+        </div>
+    </section>
+    <section class="engine container">
+        <div class="engine-box">
+            <div class="title">
+                <h2>Забота о состоянии двигателя</h2>
+            </div>
+            <div class="list">
+                <div class="secure-titles">
+                    <div class="abs-block">
+                        <div class="inner">
+                            <p>
+                                Защита от трения
+                                <img src="static/img/Line 4.svg" alt="">
+                            </p>
+                            <p>
+                                Защита от образования отложений
+                                <img src="static/img/Line 4.svg" alt="">
+                            </p>
+                            <p>
+                                Защита от высоких нагрузок
+                                <img src="static/img/Line 4.svg" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="engine-image">
+                    <img src="static/img/gandex 1.png" alt="Engine">
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if main_page.hit_of_sell %}
+        <section class="top-products container">
+        <div class="title">
+            <h2>Хиты продаж</h2>
+        </div>
+        <div class="top-products-box">
+            <ul class="products-slider">
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="/exact-product.html" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="/exact-product.html" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+    {% if main_page.newsellers %}
+        <section class="newsellers container top-products">
+        <div class="title">
+            <h2>Новинки</h2>
+        </div>
+        <div class="sales-list top-products-box">
+            <ul class="top-products">
+                <li>
+                    <div class="top-content">
+                        <div class="description">
+                            <div class="title">
+                                <p>TONNARD 89 10W-40</p>
+                                <span class="span-line"></span>
+                            </div>
+                            <div class="desc">
+                                <p>
+                                    Малозольное моторное масло Lemarc TONNARD 89 10W-40 для дизельных двигателей нового поколения, произведенное по технологии Low SAPS.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="image">
+                            <img src="static/img/image 35.jpg" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+    {% if main_page.hot_sale %}
+        <section class="top-products container">
+        <div class="title">
+            <h2>Горячие скидки</h2>
+        </div>
+        <div class="top-products-box">
+            <ul class="products-slider">
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="/exact-product.html" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="/exact-product.html" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+                <li>
+                    <img src="static/img/image 33.jpg" alt="">
+                    <p class="pr-name">QUALARD NEO 0W-20</p>
+                    <div class="price">
+                        <p>70.000 UZS</p>
+                        <a href="/" class="button-link">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="detail-button">Подробнее</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+    <section class="feedback container">
+        <div class="title">
+            <h2>Оставьте заявку и мы проконсультируем вас!</h2>
+        </div>
+        <div class="feedback-box" id="feedback-box">
+            <div class="form-groug" id="request_form">
+                <form action="">
+                    <input type="text" name="fio" placeholder="ФИО" required>
+                    <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <textarea name="comment" id="" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                    <!-- make 2 checkboxes -->
+                    <div class="form-group">
+                        <input type="checkbox" id="consent1" name="consent1" required>
+                        <label for="consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="consent2" name="consent2" required>
+                        <label for="consent2">Я даю согласие на получение рекламной рассылки.</label>
+                    </div>
+                    <button type="submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+            <div class="image">
+                <img src="static/img/image 37.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- <div class="mission container">
+        <div class="mission-left">
+            <div class="mission-box">
+                <div class="mission-top">
+                    <h2>Преимущества нашей продукции</h2>
+                </div>
+                <div class="subheader">
+                    <p>
+                    Высокотехнологичные смазочные материалы закрывают широкий спектр 
+                    потребностей в обслуживании различного оборудования и техники
+                    </p>
+                </div>
+                <div class="more_info">
+                    <a href="/" class="more_info_button">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="mission-right">
+            <ul class="mission-right-box">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div> -->
+    <section class="reviews container">
+        <div class="title">
+            <h2>
+                Отзывы покупателей
+            </h2>
+        </div>
+        <div class="reviews-box">
+            <div class="review">
+                <div class="review-header">
+                    <p class="reviewr-name">Юрий Максимович</p>
+                    <p class="review-date">22.03.2024</p>
+                </div>
+                <div class="review-body">
+                    <p class="review-text">
+                        — Я приобрел масло этого магазина для своего автомобиля, 
+                        и результаты меня поразили! 
+                    </p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <p class="reviewr-name">Юрий Максимович</p>
+                    <p class="review-date">22.03.2024</p>
+                </div>
+                <div class="review-body">
+                    <p class="review-text">
+                        — Я приобрел масло этого магазина для своего автомобиля, 
+                        и результаты меня поразили! Двигатель стал работать более плавно, 
+                        а расход топлива уменьшился. Очень доволен качеством продукции и 
+                        оперативной доставкой. Рекомендую!
+                    </p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <p class="reviewr-name">Юрий Максимович</p>
+                    <p class="review-date">22.03.2024</p>
+                </div>
+                <div class="review-body">
+                    <p class="review-text">
+                        — Я приобрел масло этого магазина для своего автомобиля, 
+                        и результаты меня поразили! Двигатель стал работать более плавно, 
+                        а расход топлива уменьшился. Очень доволен качеством продукции и 
+                        оперативной доставкой. Рекомендую!
+                    </p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <p class="reviewr-name">Юрий Максимович</p>
+                    <p class="review-date">22.03.2024</p>
+                </div>
+                <div class="review-body">
+                    <p class="review-text">
+                        — Я приобрел масло этого магазина для своего автомобиля, 
+                        и результаты меня поразили! Двигатель стал работать более плавно, 
+                        а расход топлива уменьшился. Очень доволен качеством продукции и 
+                        оперативной доставкой. Рекомендую!
+                    </p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <p class="reviewr-name">Юрий Максимович</p>
+                    <p class="review-date">22.03.2024</p>
+                </div>
+                <div class="review-body">
+                    <p class="review-text">
+                        — Я приобрел масло этого магазина для своего автомобиля, 
+                        и результаты меня поразили! Двигатель стал работать более плавно, 
+                        а расход топлива уменьшился. Очень доволен качеством продукции и 
+                        оперативной доставкой. Рекомендую!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq">
+        <div class="faq-box">
+            <div class="faq-main">
+                <div class="title">
+                    <p>Часто задаваемые вопросы:</p>
+                </div>
+                <ul>
+                    <li>
+                        Как выбрать подходящее моторное масло для моего автомобиля?
+                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                    </li>
+                    <li>
+                        Как выбрать подходящее моторное масло для моего автомобиля?
+                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                    </li>
+                    <li>
+                        Как выбрать подходящее моторное масло для моего автомобиля?
+                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                    </li>
+                    <li>
+                        Как выбрать подходящее моторное масло для моего автомобиля?
+                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="motor-image">
+                <img src="static/img/gandex 2.svg" alt="">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-box container">
+            <div class="logo">
+                <img src="static/img/Horizontal logo.png" alt="">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="bold-text">Меню</li>
+                    <li>О компании</li>
+                    <li>Каталог</li>
+                    <li>Продукция</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="navigation">
+                <ul>
+                    <li class="bold-text">Навигация</li>
+                    <li>Преимущество</li>
+                    <li>Продукция</li>
+                    <li>Хиты продаж</li>
+                    <li>Новинки</li>
+                </ul>
+            </div>
+            <div class="other">
+                <ul>
+                    <li>Скидки</li>
+                    <li>Отзывы</li>
+                    <li>Вопрос/Ответ</li>
+                </ul>
+            </div>
+            <div class="other-2">
+                <p class="make_request">
+                    <button id="show_form_button">
+                        Оставить заявку
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="upper">
+                <p>31231</p>
+                <p>31231</p>
+            </div>
+            <div class="bottom">
+                <div class="offerta">
+                    <p>Условия использования</p>
+                    <p>Согласие на обработку персональных данных</p>
+                </div>
+                <div class="address"> 
+                    <img src="static/img/location copy.svg" alt="">   
+                    <p>г. Ташкент, Сергелийский район, ул. Сугдиана 50Ж</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <section class="header" style="height: 100px;"></section> -->
+    <script src="static/js/script.js"></script>
+</body>
+</html>

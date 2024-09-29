@@ -1,0 +1,42 @@
+.location-number {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.location-number .os ul {
+    list-style: none;
+    padding: 0;
+}
+
+.location-number .os ul li {
+    display: flex;
+    /* grid-template-columns: 1fr 0.5fr 2fr; */
+    align-items: center;
+    line-height: 1.5;
+    gap: 10px;
+}
+
+.location-number .os ul li p {
+    margin: 0;
+    cursor: pointer;
+}
+.location-number .os ul li:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.location-number .os ul li .span-line-vert {
+    display: block;
+    /* width: 90%; */
+    height: 2px;
+    background: red;
+    rotate:  90deg;
+}
+
+.location-number .map .ifr {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(28, 28, 28, 0.25);
+}

@@ -1,0 +1,79 @@
+{% extends 'oil/base.html' %}
+
+{% block content %}
+    <section class="container">
+        <div class="about">
+            <div class="text">
+                <div class="title">
+                    <img src="/static/img/Symbol.png" alt="" width="100px">
+                    <h3>Oil Drive</h3>
+                </div>
+                <p>
+                    {{ about.main_about }}
+                </p>
+            </div>
+            <div class="images">
+
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="mission-box">
+            <div class="title">
+                <h2>Миссии компании</h2>
+            </div>
+            <div class="mission-list">
+                <ul>
+                    {% for mission in about.missions.all %}
+                        <li>
+                            <img src="/media/{{ mission.photo }}" alt="" width="245px" height="245px">
+                            <p>{{ mission.little_text }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="newsellers container top-products">
+        <div class="title">
+            <h2>История</h2>
+        </div>
+        <div class="sales-list top-products-box">
+            <ul class="top-products">
+                <li>
+                    <div class="top-content">
+                        <div class="description">
+                            <div class="title">
+                                <p>{{ about.ages }}</p>
+                                <span class="span-line"></span>
+                            </div>
+                            <div class="desc">
+                                <p>
+                                    {{ about.history }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="image">
+                            <img src="/media/{{ about.history_photo }}" alt="" width="100%">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="container">
+        <div class="achieves">
+            <div class="title">
+                <h2>Достижения</h2>
+            </div>
+            <ul>
+                {% for achieve in about.achievements.all %}
+                    <li>
+                        <img src="/media/{{ achieve.photo }}" alt="" height="100%">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+

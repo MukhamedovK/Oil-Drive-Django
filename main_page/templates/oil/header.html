@@ -1,0 +1,123 @@
+{% load static %}
+<header>
+    <div class="header-mobile" id="header-mobile">
+        <div class="search-bar">
+            <form action="/main_page/{{ lang }}">
+                <input type="text" placeholder="Поиск" name="search">
+            </form>
+        </div>
+        <div class="nav" id="nav-mob">
+            <ul>
+                <li>
+                    <a href="/" class="navbar_logo">
+                        <img src="{% static 'img/Horizontal logo.png' %}" alt="" width="100%">
+                    </a>
+                </li>
+                <li class="language-burger">
+                    <nav class="header-links" style="font-family: 'Noto Sans', sans-serif">
+                        <a href="/main_page/uz" {% if lang == 'uz' %}style="font-weight: 800; color: #010101"{% endif %}>UZ</a>
+                        <a href="/main_page/ru" {% if lang == 'ru' %}style="font-weight: 800; color: #010101"{% endif %}>RU</a>
+                        <a href="/main_page/en" {% if lang == 'en' %}style="font-weight: 800; color: #010101"{% endif %}>EN</a>
+                    </nav>
+                    <div class="burger-menu" id="burger-menu">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        {% include 'oil/nav-mobile.html' %}
+    </div>
+    <div class="top-header container" id="top-header">
+        <div class="address">
+            <img src="../../static/img/location_copy.svg" alt="">
+            <p>{{ address }}</p>
+        </div>
+        <a href="/" class="navbar_logo hidden">
+            <img src="../../static/img/Horizontal logo.png" alt="" width="210px">
+        </a>
+        <div class="search-bar" id="search-bar">
+            <form action="/main_page/{{ lang }}">
+                <input type="text" placeholder="Поиск" name="search">
+            </form>
+        </div>
+        <div class="phone-number">
+            <img src="../../static/img/call_copy.svg" alt="">
+            <div>
+                {% for number in contacts %}
+                    <p>{{ number.contact_number }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="navbar container" id="navbar">
+        <a href="/" class="navbar_logo" id="navbar_logo">
+            <img src="../../static/img/Horizontal logo.png" alt="" width="210px">
+        </a>
+        <nav class="navbar_menu" style="font-family: 'Noto Sans', sans-serif">
+            <ul class="navbar_items">
+                <li>
+                    <a href="/about/{{ lang }}">О компании</a>
+                </li>
+                <li class="category">
+                    <a href="/catalog/{{ lang }}/">Каталог</a>
+                    <div class="popup-menu">
+                        {% for category in categories %}
+                            <a href="/catalog/{{ lang }}/?category={{ category.category_name }}">
+                                {{ category.category_name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </li>
+                <li>
+                    <a href="/production/{{ lang }}">Продукция</a>
+                </li>
+                <li>
+                    <a href="/contacts/{{ lang }}">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="language_request">
+            <nav class="header-links" style="font-family: 'Noto Sans', sans-serif">
+                <a href="/main_page/uz" {% if lang == 'uz' %}style="font-weight: 800; color: #010101"{% endif %}>UZ</a>
+                <a href="/main_page/ru" {% if lang == 'ru' %}style="font-weight: 800; color: #010101"{% endif %}>RU</a>
+                <a href="/main_page/en" {% if lang == 'en' %}style="font-weight: 800; color: #010101"{% endif %}>EN</a>
+            </nav>
+            <p class="make_request">
+                <button id="show_form_button">
+                    Оставить заявку
+                </button>
+            </p>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <section class="feedback hidden" id="request_form_overlay">
+        <div class="feedback-box" id="feedback-box">
+            <div class="form-groug" id="request_form">
+                <div class="title" id="overlay-title">
+                    <h2>Оставьте заявку</h2>
+                </div>
+                <form action="/get-form-data/{{ lang }}" id="overlay-form" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="fio" placeholder="ФИО" required>
+                    <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <textarea name="comment" id="overlay-text" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                    <!-- make 2 checkboxes -->
+                    <div class="form-group">
+                        <input type="checkbox" id="overlay-consent1" name="consent1" required>
+                        <label for="overlay-consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="overlay-consent2" name="consent2" required>
+                        <label for="overlay-consent2">Я даю согласие на получение рекламной рассылки.</label>
+                    </div>
+                    <button type="submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</header>

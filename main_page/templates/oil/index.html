@@ -1,0 +1,297 @@
+{% extends 'oil/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="main-banners container">
+        <div class="add-block">
+            {% for banner in banners %}
+                <img src="/{{ banner.banner_image }}" alt="banner">
+                <div class="banner-content">
+                    <h2>{{ banner.banner_text }}</h2>
+                    <a href="{{ banner.banner_button_link }}">
+                        {{ banner.banner_button }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <ul class="catalog-pic">
+            {% for category in categories %}
+                <li>
+                    <a href="/catalog/{{ lang }}/?category={{ category.category_name }}">
+                        <img src="/media/{{ category.category_photo }}" alt="/static/img/sedan.jpg">
+                    </a>
+                    <p class="hidden">{{ category.category_name }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section class="best-points container" id="best-points">
+        <div class="card">
+            <h3>Передовые технологии</h3>
+            <img src="../../static/img/Group 41.svg" alt="" class="lines">
+            <h3>Гарантия качества</h3>
+            <img src="../../static/img/Group 41.svg" alt="" class="lines">
+            <h3>Удобство заказа</h3>
+            <img src="../../static/img/Group 41.svg" alt="" class="lines">
+        </div>
+        <div class="card card-center">
+            <img src="{% static 'img/Horizontal logo.png' %}" alt="" class="square-logo">
+            <!-- <a href="/" class="more_info">Подробнее</a> -->
+        </div>
+        <div class="card">
+            <h3>Высокое качество</h3>
+            <img src="../../static/img/Group 40.svg" alt="" class="lines">
+            <h3>Премиальный уровень</h3>
+            <img src="../../static/img/Group 40.svg" alt="" class="lines">
+            <h3>Спец. предложения и акции</h3>
+            <img src="../../static/img/Group 40.svg" alt="" class="lines">
+        </div>
+    </section>
+    <section class="engine container">
+        <div class="engine-box">
+            <div class="title">
+                <h2>Забота о состоянии двигателя</h2>
+            </div>
+            <div class="list">
+                <div class="secure-titles">
+                    <div class="abs-block">
+                        <div class="inner" id="inner" style="font-family: 'Alegreya Sans SC', sans-serif">
+                            <p>
+                                Защита от трения
+                                <img src="../../static/img/Line 4.svg" alt="">
+                            </p>
+                            <p>
+                                Защита от образования отложений
+                                <img src="../../static/img/Line 4.svg" alt="">
+                            </p>
+                            <p>
+                                Защита от высоких нагрузок
+                                <img src="../../static/img/Line 4.svg" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="engine-image">
+                    <img src="../../static/img/gandex 1.png" alt="Engine">
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if partners %}
+        <section class="container" style="padding-top: 75px;">
+            <div class="achieves" style="padding-bottom: 0">
+                <div class="title">
+                    <h2>Наши партнеры</h2>
+                </div>
+                <ul style="display: flex; gap: 15px; overflow-x: scroll; padding: 15px 0px">
+                    {% for i in partners %}
+                        <li style="box-shadow: 0px 0px 1px 0px rgba(28, 28, 28, 0.25); display: grid">
+                            <div class="partner-logo"
+                                 style="display: flex; justify-content: center; align-items: center; width: 100%; height: fit-content">
+                                <img src="/media/{{ i.partner_logo }}" alt="" height="205px" width="390px" style="min-width: 390px; max-width: 390px; min-height: 205px; max-height: 205px">
+                            </div>
+                            <div class="partner-name" style="display: flex; padding: 10px; align-items: center; position: relative; background: rgba(65, 65, 65, 0.7); border-radius: 30px; color: #ffffff">
+                                <img src="/media/{{ i.partner_city }}"
+                                     alt="Флаг" width="43px"
+                                     height="32px" style="background-size: cover; width: 43px; border-radius: 7px">
+                                <p style="font-size: 14px; font-weight: 500; text-align: center; margin: 0; margin-left: 10px">
+                                    {{ i.partner_name }}
+                                </p>
+                                <span id="span-toggle" style="position: absolute; right: 5px;" class="toggle">
+                                    {% if i.partner_info %}
+                                        <a href="/partners/{{ i.id }}/{{ lang }}" style="text-decoration: none">
+                                            <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ i.partner_url }}" style="text-decoration: none">
+                                            <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
+                                        </a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if top_products %}
+        <section class="top-products container">
+            <div class="title">
+                <h2>Хиты продаж</h2>
+            </div>
+            <div class="top-products-box">
+                <ul class="products-slider">
+                    {% for i in top_products %}
+                        {% for b in i.volume_photos.all %}
+                            {% if b.first %}
+                                <li>
+                                    <img src="/media/{{ b.volume_photo }}" alt="" width="202px" height="202px">
+                                    <p class="pr-name">{{ i.name }}</p>
+                                    <div class="price">
+                                        <p class="price-main" id="priceIndex1">{% widthratio b.volume_price 1 currency_rate %} UZS</p>
+                                        <a href="/exact-product/{{ i.id }}/{{ lang }}">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                    <a href="/exact-product/{{ i.id }}/{{ lang }}" class="detail-button">Подробнее</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+    {% if new_product %}
+        <section class="newsellers container top-products">
+            <div class="title">
+                <h2>Новинки</h2>
+            </div>
+            <div class="sales-list top-products-box">
+                <ul class="top-products" style="width: 100%">
+                    <li>
+                        <div class="top-content">
+                            <div class="description">
+                                <div class="title">
+                                    <p style="font-family: 'Alegreya Sans SC'">{{ new_product.name }}</p>
+                                    <span class="span-line"></span>
+                                </div>
+                                <div class="desc" style="font-family: 'Noto Sans', sans-serif">
+                                    <p style="font-family: 'Noto Sans', sans-serif">
+                                        {{ new_product.description | safe }}
+                                    </p>
+                                </div>
+                                <div class="get-info">
+                                    <a href="/exact-product/{{ new_product.id }}/{{ lang }}">Подробнее</a>
+                                </div>
+                            </div>
+                            <div class="image">
+                                <img src="/media/{{ new_product.volume_photos.all.0.volume_photo }}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+    {% if top_sale %}
+        <section class="top-products container">
+            <div class="title">
+                <h2>Горячие скидки</h2>
+            </div>
+            <div class="top-products-box">
+                <ul class="products-slider">
+                    {% for i in top_sale %}
+                        {% for b in i.volume_photos.all %}
+                            {% if b.first %}
+                                <li>
+                                    <img src="/media/{{ b.volume_photo }}" alt="" width="202px" height="202px">
+                                    <p class="pr-name">{{ i.name }}</p>
+                                    <div class="price">
+                                        <p class="price-main" id="priceIndex1">{% widthratio b.volume_price 1 currency_rate %} UZS</p>
+                                        <a href="/exact-product/{{ i.id }}/{{ lang }}">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                    <a href="/exact-product/{{ i.id }}/{{ lang }}" class="detail-button">Подробнее</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+    <section class="feedback container">
+        <div class="title">
+            <h2>Оставьте заявку и мы проконсультируем вас!</h2>
+        </div>
+        <div class="feedback-box" id="feedback-box">
+            <div class="form-groug" id="request_form">
+                <form action="/get-form-data/{{ lang }}?from=Основная" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="fio" placeholder="ФИО" required>
+                    <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <textarea name="comment" id="" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                    <!-- make 2 checkboxes -->
+                    <div class="form-group" style="font-family: 'Noto Sans', sans-serif">
+                        <input type="checkbox" id="consent1" name="consent1" required>
+                        <label for="consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                    </div>
+                    <div class="form-group" style="font-family: 'Noto Sans', sans-serif">
+                        <input type="checkbox" id="consent2" name="consent2" required>
+                        <label for="consent2">Я даю согласие на получение рекламной рассылки.</label>
+                    </div>
+                    <button type="submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+            <div class="image">
+                <img src="../../static/img/image 37.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    {% if feedbacks %}
+        <section class="reviews container">
+            <div class="title">
+                <h2>
+                    Отзывы покупателей
+                </h2>
+            </div>
+            <div class="reviews-box">
+                {% for i in feedbacks %}
+                    <div class="review">
+                        <div class="review-header" style="font-family: 'Alegreya Sans SC', sans-serif">
+                            <p class="reviewr-name">{{ i.client_name }}</p>
+                            <p class="review-date">{{ i.publish_date }}</p>
+                        </div>
+                        <div class="review-body">
+                            <p class="review-text" style="font-family: 'Noto Sans', sans-serif">
+                                — {{ i.feedback_text }}}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    <section class="faq">
+        <div class="faq-box">
+            <div class="faq-main">
+                <div class="title">
+                    <p>Часто задаваемые вопросы:</p>
+                </div>
+                <ul>
+                    {% for i in faqs %}
+                        <li class="question">
+                            <p style="margin: 0; font-size: 16px; font-family: 'Alegreya Sans SC', sans-serif">
+                                {{ i.question }}
+                            </p>
+                            <span class="toggle"><i class="fa-solid fa-arrow-right"></i></span>
+                            <div class="answer hidden">
+                                <hr style="border: none">
+                                <p style="margin: 0; font-size: 14px; font-weight: 400; font-family: 'Noto Sans', sans-serif">
+                                    {{ i.answer }}
+                                </p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sizeLinks = document.querySelectorAll('.price-main');
+            sizeLinks.forEach(function(link) {
+                link.textContent = link.textContent.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'oil/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="path">
+        <ul>
+            <li>Главная</li>
+            <li><span>/</span></li>
+            <li>Контакты</li>
+        </ul>
+    </div>
+    <section class="contact-box container">
+        <div class="title">
+            <h2>Контакты</h2>
+        </div>
+        <div class="location-number">
+            <div class="os">
+                <ul>
+                    <li>
+                        <img src="/static/img/location.svg" alt="">
+                        <span class="span-line-vert"></span>
+                        <p>{{ address }}</p>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/call.svg' %}" alt="">
+                        <span class="span-line-vert"></span>
+                        <div class="phone-numbers">
+                            {% for contact in contacts %}
+                                <p>{{ contact.contact_number }}</p>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/location.svg' %}" alt="">
+                        <span class="span-line-vert"></span>
+                        <div class="phone-numbers">
+                            {% for email in emails %}
+                                <p>{{ email.email }}</p>
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="map">
+                <iframe class="ifr" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae44183608846fd19e13498f6b1cbb967948200f6c8302bc3248a678125b10b72&amp;source=constructor" width="804" height="330" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+    <section class="feedback container">
+        <div class="title">
+            <h2>Оставьте заявку и мы проконсультируем вас!</h2>
+        </div>
+        <div class="feedback-box" id="feedback-box">
+            <div class="form-groug" id="request_form">
+                <form action="">
+                    <input type="text" name="fio" placeholder="ФИО" required>
+                    <input type="phone-number" name="phone_number" placeholder="Номер телефона" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <textarea name="comment" id="" cols="30" rows="10" placeholder="Комментарий" required></textarea>
+                    <!-- make 2 checkboxes -->
+                    <div class="form-group">
+                        <input type="checkbox" id="consent1" name="consent1" required>
+                        <label for="consent1">Я даю согласие на обработку персональных данных и ознакомлен (-а) с Политикой в отношении обработки персональных данных.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="consent2" name="consent2" required>
+                        <label for="consent2">Я даю согласие на получение рекламной рассылки.</label>
+                    </div>
+                    <button type="submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+            <div class="image">
+                <img src="{% static 'img/image 37.jpg' %}" alt="">
+            </div>
+        </div>
+    </section>
+{% endblock %}

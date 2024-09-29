@@ -1,0 +1,185 @@
+{% extends 'oil/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% block content %}
+    <div class="path">
+        <ul>
+            <li>Главная</li>
+            <li><span>/</span></li>
+            <li>Продукты</li>
+            <li><span>/</span></li>
+            <li>{{ product.category.all.0.category_name }}</li>
+            <li><span>/</span></li>
+            <li>{{ product.name }}</li>
+        </ul>
+    </div>
+    <main>
+        <div class="product-content container">
+            <section class="main-info">
+                <div class="swiper images" style="z-index: 1">
+                    <div class="swiper-wrapper">
+                        {% for i in product.volume_photos.all %}
+                            <div class="swiper-slide">
+                                <img id="dynamicImage" src="/media/{{ i.volume_photo }}" alt="">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="descriptions">
+                    <div class="product-title blur-text">
+                        {{ product.category.category_name }}
+                    </div>
+                    <div class="title">
+                        <h3>{{ product.name }}</h3>
+                    </div>
+                    <div class="sizes">
+                        <ul>
+                            {% for i in product.volume_photos.all %}
+                                <li data-slide-src="/media/{{ i.volume_photo }}" data-price="{{ i.volume_price }}">{{ i.volume }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% if product.count %}
+                            <p>
+                                В наличии: <b>{{ product.count }} шт</b>
+                            </p>
+                        {% endif %}
+                        <p>
+                            Цена:
+                        </p>
+                        <h1 id="priceDisplay">
+                            {% widthratio product.volume_photos.all.0.volume_price 1 currency_rate %} сум
+                        </h1>
+                        <span class="span-line"></span>
+                    </div>
+                    
+                    <div class="little-desc">
+                        <ul>
+                            {% if product.use_type %}
+                                <li>
+                                    Область применения: <b>{{ product.use_type }}</b>
+                                </li>
+                            {% endif %}
+
+                            {% if product.sae_status %}
+                                <li>
+                                    Вязкость: <b>{{ product.sae_status }}</b>
+                                </li>
+                            {% endif %}
+
+                            {% if product.specifications %}
+                                <li>
+                                    Спецификация: <b>{{ product.specifications| safe }}</b>
+                                </li>
+                            {% endif %}
+                            {% if product.engine.all %}
+                                <li>
+                                    Вид двигателя: <b>{% for i in product.engine.all %}{{ i.type_name }} {% endfor %}</b>
+                                </li>
+                            {% endif %}
+                            {% if product.line %}
+                                <li>
+                                    Линейка: <b>{{ product.line }}</b>
+                                </li>
+                            {% endif %}
+                            {% if product.color %}
+                                <li>
+                                    Цвет: <b>{{ product.color }}</b>
+                                </li>
+                            {% endif %}
+                            {% if product.kachestvo %}
+                                <li>
+                                    Уровень качества: <b>{{ product.kachestvo }}</b>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    {% if product.file %}
+                        <div class="buttons" style="grid-template-columns: 1fr 1fr;">
+                            <a download href="/media/{{ product.file }}" class="buttons-a">Скачать техническое описание</a>
+                            <button id="show_form_button_e" data-product="{{ product.name }}">Оставить заявку</button>
+                        </div>
+                    {% else %}
+                        <div class="buttons" style="grid-template-columns: 1fr;">
+                            <button style="cursor: pointer" id="show_form_button_e" data-product="{{ product.name }}">Оставить заявку</button>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+            <section>
+                <div class="detailed-info">
+                    <ul>
+                        {% if product.description %}
+                            <li>
+                                <h4>Описание</h4>
+                                <span class="span-line"></span>
+                                <p>
+                                    {{ product.description | safe }}
+                                </p>
+                            </li>
+                        {% endif %}
+                        {% if product.advantages %}
+                            <li>
+                                <h4>Преимущества</h4>
+                                <span class="span-line"></span>
+                                <p>
+                                    {{ product.advantages | safe }}
+                                </p>
+                            </li>
+                        {% endif %}
+                        {% if product.composition_sets.all %}
+                            <li>
+                                <h4>Физико-химические показатели</h4>
+                                <span class="span-line"></span>
+                                <table>
+                                    <tr>
+                                        <th>ПОКАЗАТЕЛЬ</th>
+                                        <th>ТРЕБОВАНИЯ</th>
+                                        <th>РЕЗУЛЬТАТЫ АНАЛИЗА</th>
+                                    </tr>
+                                    {% for i in product.composition_sets.all %}
+                                        <tr>
+                                            <td>{{ i.name }}</td>
+                                            <td>{{ i.test_result }}</td>
+                                            <td>{{ i.description }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </section>
+        </div>
+        {% if have_seen %}
+            {% include 'oil/seen-products.html' %}
+        {% endif %}
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Инициализация Swiper
+            var swiper = new Swiper('.swiper', {
+                loop: true,
+                simulateTouch: true,
+                touchRatio: 1,
+            });
+            let firstPrice = document.getElementById('priceDisplay')
+            firstPrice.textContent = firstPrice.textContent.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
+            // Обработчик кликов по элементам списка
+            var sizeLinks = document.querySelectorAll('.sizes li');
+            sizeLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    let newSrc = this.getAttribute('data-slide-src');
+                    let newPrice = parseFloat(this.getAttribute('data-price').replace(',', '.'));
+
+                    let dynamicImage = document.getElementById('dynamicImage');
+                    let priceDisplay = document.getElementById('priceDisplay')
+                    let j = parseInt(newPrice) * {{ currency_rate }}
+                    priceDisplay.textContent = j.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' сум'
+                    dynamicImage.src = newSrc; // Обновление изображения
+                    swiper.update(); // Обновление Swiper для корректного отображения
+                });
+            });
+        });
+    </script>
+{% endblock %}

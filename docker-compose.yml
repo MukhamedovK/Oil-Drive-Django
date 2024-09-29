@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command:
+      - python
+      - ./manage.py
+      - runserver
+      - 0.0.0.0:3191
+
+    ports:
+      - 3191:3191
+
+    volumes:
+      - .:/code
+      - files:/docs
+      - static:/assets
+      - media:/media
+
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+volumes:
+  postgres_data:
+  files:
+  static:
+  media:
