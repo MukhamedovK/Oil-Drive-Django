@@ -1,5 +1,4 @@
 venv/
-db.sqlite3
 main_page/__pycache__
 main_page/migrations
 oil_web/__pycache__
