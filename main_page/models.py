@@ -103,7 +103,7 @@ class MainPage(models.Model):
 
 class Banner(models.Model):
     banner_text = models.TextField(verbose_name='Текст к баннеру')
-    banner_image = models.ImageField(verbose_name='Фото', upload_to='media')
+    banner_image = models.ImageField(verbose_name='Фото', upload_to='')
     banner_button = models.CharField(max_length=255, verbose_name='Текст кнопки')
     banner_button_link = models.CharField(max_length=255, verbose_name='Ссылка к кнопке')
 
